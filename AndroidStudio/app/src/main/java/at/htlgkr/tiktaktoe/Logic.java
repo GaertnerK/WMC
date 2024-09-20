@@ -23,7 +23,7 @@ public class Logic {
         }
     }
 
-    public String setButton(int buttonNbr){
+    public String setButton(int buttonNbr , String buttonText){
         int counter = 1;
         for (int i = 0; i < gameField.getField().length; i++){
             for (int j = 0; j < gameField.getField()[i].length; j++){
@@ -39,7 +39,7 @@ public class Logic {
                         }
                     }else {
                         Log.i("FIELD_INFO", "Feld ist bereits vergeben");
-                        if (isPlayer()){
+                        if (buttonText.equals("X")){
                             return "X";
                         }else {
                             return "0";

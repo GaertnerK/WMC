@@ -60,23 +60,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.button1){
-            b1.setText(logic.setButton(1));
+            b1.setText(logic.setButton(1, b1.getText().toString()));
         }else if (view.getId() == R.id.button2){
-            b2.setText(logic.setButton(2));
+            b2.setText(logic.setButton(2, b2.getText().toString()));
         }else if (view.getId() == R.id.button3){
-            b3.setText(logic.setButton(3));
+            b3.setText(logic.setButton(3, b3.getText().toString()));
         }else if (view.getId() == R.id.button4){
-            b4.setText(logic.setButton(4));
+            b4.setText(logic.setButton(4, b4.getText().toString()));
         }else if (view.getId() == R.id.button5){
-            b5.setText(logic.setButton(5));
+            b5.setText(logic.setButton(5, b5.getText().toString()));
         }else if (view.getId() == R.id.button6){
-            b6.setText(logic.setButton(6));
+            b6.setText(logic.setButton(6, b6.getText().toString()));
         }else if (view.getId() == R.id.button7){
-            b7.setText(logic.setButton(7));
+            b7.setText(logic.setButton(7, b7.getText().toString()));
         }else if (view.getId() == R.id.button8){
-            b8.setText(logic.setButton(8));
+            b8.setText(logic.setButton(8, b8.getText().toString()));
         }else if (view.getId() == R.id.button9){
-            b9.setText(logic.setButton(9));
+            b9.setText(logic.setButton(9, b9.getText().toString()));
         }
     }
 }
