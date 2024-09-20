@@ -1,6 +1,7 @@
 package at.htlgkr.tiktaktoe;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button b8;
     Button b9;
 
+    private Logic logic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,28 +53,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b8.setOnClickListener(this);
         b9 = findViewById(R.id.button9);
         b9.setOnClickListener(this);
+
+        logic = new Logic();
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.button1){
-
+            b1.setText(logic.setButton(1));
         }else if (view.getId() == R.id.button2){
-
+            b2.setText(logic.setButton(2));
         }else if (view.getId() == R.id.button3){
-
+            b3.setText(logic.setButton(3));
         }else if (view.getId() == R.id.button4){
-
+            b4.setText(logic.setButton(4));
         }else if (view.getId() == R.id.button5){
-
+            b5.setText(logic.setButton(5));
         }else if (view.getId() == R.id.button6){
-
+            b6.setText(logic.setButton(6));
         }else if (view.getId() == R.id.button7){
-
+            b7.setText(logic.setButton(7));
         }else if (view.getId() == R.id.button8){
-
+            b8.setText(logic.setButton(8));
         }else if (view.getId() == R.id.button9){
-
+            b9.setText(logic.setButton(9));
         }
     }
 }
