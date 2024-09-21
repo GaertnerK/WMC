@@ -53,17 +53,76 @@ public class Logic {
         return "";
     }
 
-    public boolean win(int buttonNbr){
-        int counter = 1;
-        int fieldNbr = 0;
+    public boolean win(){
+        int counter = 0;
         for (int i = 0; i < gameField.getField().length; i++){
             for (int j = 0; j < gameField.getField()[i].length; j++){
-                if (counter == buttonNbr){
-                    while ()
+                if (gameField.getField()[i][j].equals("X")){
+                    counter++;
                 }
+            }
+            if (counter == 3){
+                return true;
+            }
+            counter = 0;
+        }
+
+        for (int i = 0; i < gameField.getField().length; i++){
+            for (int j = 0; j < gameField.getField()[i].length; j++){
+                if (gameField.getField()[i][j].equals("0")){
+                    counter++;
+                }
+            }
+            if (counter == 3){
+                return true;
+            }
+            counter = 0;
+        }
+
+        for (int i = 0; i < gameField.getField().length; i++){
+            if (gameField.getField()[i][i].equals("X")){
                 counter++;
             }
         }
+        if (counter == 3){
+            return true;
+        }
+        counter = 0;
+
+        for (int i = 0; i < gameField.getField().length; i++){
+            if (gameField.getField()[i][i].equals("0")){
+                counter++;
+            }
+        }
+        if (counter == 3){
+            return true;
+        }
+        counter = 0;
+
+        for (int i = 2; i >= 0; i--){
+            for (int j = 0; j < gameField.getField()[i].length; j++){
+                if (gameField.getField()[i][j].equals("X")){
+                    counter++;
+                }
+            }
+            if (counter == 3){
+                return true;
+            }
+            counter = 0;
+        }
+
+        for (int i = 2; i >= 0; i--){
+            for (int j = 0; j < gameField.getField()[i].length; j++){
+                if (gameField.getField()[i][j].equals("0")){
+                    counter++;
+                }
+            }
+            if (counter == 3){
+                return true;
+            }
+            counter = 0;
+        }
+
         return false;
     }
 }

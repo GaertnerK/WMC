@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button b7;
     Button b8;
     Button b9;
+    TextView winMessage;
 
     private Logic logic;
 
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b9 = findViewById(R.id.button9);
         b9.setOnClickListener(this);
 
+        winMessage = findViewById(R.id.tv_winMessage);
+
         logic = new Logic();
     }
 
@@ -61,22 +65,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view.getId() == R.id.button1){
             b1.setText(logic.setButton(1, b1.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b1.getText() + " won!");
+            }
         }else if (view.getId() == R.id.button2){
             b2.setText(logic.setButton(2, b2.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b2.getText() + " won!");
+            }
         }else if (view.getId() == R.id.button3){
             b3.setText(logic.setButton(3, b3.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b3.getText() + " won!");
+            }
         }else if (view.getId() == R.id.button4){
             b4.setText(logic.setButton(4, b4.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b4.getText() + " won!");
+            }
         }else if (view.getId() == R.id.button5){
             b5.setText(logic.setButton(5, b5.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b5.getText() + " won!");
+            }
         }else if (view.getId() == R.id.button6){
             b6.setText(logic.setButton(6, b6.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b6.getText() + " won!");
+            }
         }else if (view.getId() == R.id.button7){
             b7.setText(logic.setButton(7, b7.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b7.getText() + " won!");
+            }
         }else if (view.getId() == R.id.button8){
             b8.setText(logic.setButton(8, b8.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b8.getText() + " won!");
+            }
         }else if (view.getId() == R.id.button9){
             b9.setText(logic.setButton(9, b9.getText().toString()));
+            if (logic.win()){
+                winMessage.setText("Player " + b9.getText() + " won!");
+            }
         }
     }
 }
