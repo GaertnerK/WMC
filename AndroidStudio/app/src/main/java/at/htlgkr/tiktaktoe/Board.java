@@ -1,13 +1,15 @@
 package at.htlgkr.tiktaktoe;
 
+import java.util.Map;
+
 public class Board {
-    private boolean[][] field;
+    private String[][] field;
 
     public Board() {
-        this.field = new boolean[3][3];
+        this.field = new String[3][3];
     }
 
-    public boolean[][] getField() {
+    public String[][] getField() {
         return field;
     }
 }

@@ -28,13 +28,14 @@ public class Logic {
         for (int i = 0; i < gameField.getField().length; i++){
             for (int j = 0; j < gameField.getField()[i].length; j++){
                 if (counter == buttonNbr){
-                    if (!gameField.getField()[i][j]){
-                        gameField.getField()[i][j] = true;
+                    if (gameField.getField()[i][j] == null){
                         if (isPlayer()){
                             setPlayer();
+                            gameField.getField()[i][j] = "X";
                             return "X";
                         }else {
                             setPlayer();
+                            gameField.getField()[i][j] = "0";
                             return "0";
                         }
                     }else {
@@ -50,5 +51,19 @@ public class Logic {
             }
         }
         return "";
+    }
+
+    public boolean win(int buttonNbr){
+        int counter = 1;
+        int fieldNbr = 0;
+        for (int i = 0; i < gameField.getField().length; i++){
+            for (int j = 0; j < gameField.getField()[i].length; j++){
+                if (counter == buttonNbr){
+                    while ()
+                }
+                counter++;
+            }
+        }
+        return false;
     }
 }
