@@ -28,7 +28,7 @@ public class Logic {
         for (int i = 0; i < gameField.getField().length; i++){
             for (int j = 0; j < gameField.getField()[i].length; j++){
                 if (counter == buttonNbr){
-                    if (gameField.getField()[i][j] == null){
+                    if (gameField.getField()[i][j] == ""){
                         if (isPlayer()){
                             setPlayer();
                             gameField.getField()[i][j] = "X";
@@ -99,9 +99,9 @@ public class Logic {
         }
         counter = 0;
 
-        for (int i = 2; i >= 0; i--){
-            for (int j = 0; j < gameField.getField()[i].length; j++){
-                if (gameField.getField()[i][j].equals("X")){
+        for (int i = 0; i < gameField.getField().length; i++){
+            for (int j = 2; j >= 0; j--){
+                if (gameField.getField()[j][j].equals("X")){
                     counter++;
                 }
             }
@@ -111,9 +111,9 @@ public class Logic {
             counter = 0;
         }
 
-        for (int i = 2; i >= 0; i--){
-            for (int j = 0; j < gameField.getField()[i].length; j++){
-                if (gameField.getField()[i][j].equals("0")){
+        for (int i = 0; i < gameField.getField().length; i++){
+            for (int j = 2; j >= 0; j--){
+                if (gameField.getField()[j][j].equals("0")){
                     counter++;
                 }
             }
