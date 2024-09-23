@@ -123,28 +123,18 @@ public class Logic {
         }
         counter = 0;
 
-        for (int i = 0; i < gameField.getField().length; i++){
-            for (int j = 2; j >= 0; j--){
-                if (gameField.getField()[j][j].equals("X")){
-                    counter++;
-                }
-            }
-            if (counter == 3){
-                return true;
-            }
-            counter = 0;
+        String s1 = gameField.getField()[2][0];
+        String s2 = gameField.getField()[1][1];
+        String s3 = gameField.getField()[0][2];
+        if (s1.equals("X") && s2.equals("X") && s3.equals("X")){
+            return true;
         }
 
-        for (int i = 0; i < gameField.getField().length; i++){
-            for (int j = 2; j >= 0; j--){
-                if (gameField.getField()[j][j].equals("0")){
-                    counter++;
-                }
-            }
-            if (counter == 3){
-                return true;
-            }
-            counter = 0;
+        String s4 = gameField.getField()[2][0];
+        String s5 = gameField.getField()[1][1];
+        String s6 = gameField.getField()[0][2];
+        if (s4.equals("0") && s5.equals("0") && s6.equals("0")){
+            return true;
         }
 
         return false;
