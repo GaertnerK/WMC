@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button b8;
     Button b9;
     TextView winMessage;
+    Button bt_reset;
 
     private Logic logic;
 
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b8.setOnClickListener(this);
         b9 = findViewById(R.id.button9);
         b9.setOnClickListener(this);
+
+        bt_reset = findViewById(R.id.bt_reset);
+        bt_reset.setOnClickListener(this);
 
         winMessage = findViewById(R.id.tv_winMessage);
 
@@ -108,6 +112,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (logic.win()){
                 winMessage.setText("Player " + b9.getText() + " won!");
             }
+        }
+        if (logic.win()) {
+            b1.setClickable(false);
+            b2.setClickable(false);
+            b3.setClickable(false);
+            b4.setClickable(false);
+            b5.setClickable(false);
+            b6.setClickable(false);
+            b7.setClickable(false);
+            b8.setClickable(false);
+            b9.setClickable(false);
+        }
+
+        if (view.getId() == R.id.bt_reset){
+            b1.setText("");
+            b2.setText("");
+            b3.setText("");
+            b4.setText("");
+            b5.setText("");
+            b6.setText("");
+            b7.setText("");
+            b8.setText("");
+            b9.setText("");
+            b1.setClickable(true);
+            b2.setClickable(true);
+            b3.setClickable(true);
+            b4.setClickable(true);
+            b5.setClickable(true);
+            b6.setClickable(true);
+            b7.setClickable(true);
+            b8.setClickable(true);
+            b9.setClickable(true);
+            winMessage.setText("");
+            logic = new Logic();
         }
     }
 }
