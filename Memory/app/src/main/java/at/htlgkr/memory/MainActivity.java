@@ -29,12 +29,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        binding.tvText.setText("Hallo");
-        binding.imageView.setImageResource(R.drawable.ic_launcher_background);
-        binding.imageView.setOnClickListener(view -> {
-            binding.imageView.setImageResource(R.drawable.ic_launcher_foreground);
-            Snackbar.make(view, "Gewonnen", Snackbar.LENGTH_SHORT).show();
-        });
+        
     }
 }
