@@ -3,13 +3,15 @@ package at.htlgkr.memory;
 import java.util.Random;
 
 public class Logic {
-    private Model model;
+    private Board model;
+    private int[] ids;
 
-    public Logic() {
-        this.model = new Model();
+    public Logic(int[] ids) {
+        this.model = new Board();
+        this.ids = ids;
     }
 
-    public Model getModel() {
+    public Board getModel() {
         return model;
     }
 
@@ -20,59 +22,70 @@ public class Logic {
             for (int j = 0; j < model.getBoard()[i].length; j++) {
                 boolean b = true;
                 while (b){
-                    int a = random.nextInt(8) + 1;
+                    int a = random.nextInt(8);
                     switch (a){
-                        case 1:
-                            if (animalCounter[i] != 2){
-                                model.getBoard()[i][j] = "dog";
+                        case 0:
+                            if (animalCounter[a] != 2){
+                                model.getBoard()[i][j] = ids[0];
+                                animalCounter[a]++;
                                 b = false;
+                            }
+                            break;
+                        case 1:
+                            if (animalCounter[a] != 2){
+                                model.getBoard()[i][j] = ids[1];
+                                b = false;
+                                animalCounter[a]++;
                             }
                             break;
                         case 2:
-                            if (animalCounter[i] != 2){
-                                model.getBoard()[i][j] = "bird";
+                            if (animalCounter[a] != 2){
+                                model.getBoard()[i][j] = ids[2];
                                 b = false;
+                                animalCounter[a]++;
                             }
                             break;
                         case 3:
-                            if (animalCounter[i] != 2){
-                                model.getBoard()[i][j] = "cat";
+                            if (animalCounter[a] != 2){
+                                model.getBoard()[i][j] = ids[3];
                                 b = false;
+                                animalCounter[a]++;
                             }
                             break;
                         case 4:
-                            if (animalCounter[i] != 2){
-                                model.getBoard()[i][j] = "ant";
+                            if (animalCounter[a] != 2){
+                                model.getBoard()[i][j] = ids[4];
                                 b = false;
+                                animalCounter[a]++;
                             }
                             break;
                         case 5:
-                            if (animalCounter[i] != 2){
-                                model.getBoard()[i][j] = "hamster";
+                            if (animalCounter[a] != 2){
+                                model.getBoard()[i][j] = ids[5];
                                 b = false;
+                                animalCounter[a]++;
                             }
                             break;
                         case 6:
-                            if (animalCounter[i] != 2){
-                                model.getBoard()[i][j] = "mouse";
+                            if (animalCounter[a] != 2){
+                                model.getBoard()[i][j] = ids[6];
                                 b = false;
+                                animalCounter[a]++;
                             }
                             break;
                         case 7:
-                            if (animalCounter[i] != 2){
-                                model.getBoard()[i][j] = "rabbit";
+                            if (animalCounter[a] != 2){
+                                model.getBoard()[i][j] = ids[7];
                                 b = false;
+                                animalCounter[a]++;
                             }
                             break;
-                        case 8:
-                            if (animalCounter[i] != 2){
-                                model.getBoard()[i][j] = "spider";
-                                b = false;
-                            }
-                            break;
+                        default: break;
                     }
                 }
             }
         }
     }
+
+
 }

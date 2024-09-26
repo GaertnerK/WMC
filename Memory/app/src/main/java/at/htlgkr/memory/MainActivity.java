@@ -1,5 +1,6 @@
 package at.htlgkr.memory;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding  binding;
     private List<ImageView> imageViews;
+    private Logic logic;
+    private int[] pictureIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,20 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        pictureIds = new int[8];
+        pictureIds[0] = R.drawable.ant;
+        pictureIds[1] = R.drawable.bird;
+        pictureIds[2] = R.drawable.cat;
+        pictureIds[3] = R.drawable.dog;
+        pictureIds[4] = R.drawable.hamster;
+        pictureIds[5] = R.drawable.mouse;
+        pictureIds[6] = R.drawable.rabbit;
+        pictureIds[7] = R.drawable.spider;
+
+
+        logic = new Logic(pictureIds);
+        logic.loadBoard();
 
         imageViews = new ArrayList<>();
 
