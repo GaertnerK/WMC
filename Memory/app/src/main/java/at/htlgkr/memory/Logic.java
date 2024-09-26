@@ -87,5 +87,7 @@ public class Logic {
         }
     }
 
-
+    public int getId(int i, int j){
+        return model.getBoard()[i][j];
+    }
 }
