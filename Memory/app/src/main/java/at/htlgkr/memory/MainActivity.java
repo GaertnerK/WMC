@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding  binding;
     private ImageView[] imageViews;
     private Logic logic;
-    private int[] pictureIds;
+    private List<Integer> pictureIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        pictureIds = new int[8];
-        pictureIds[0] = R.drawable.ant;
-        pictureIds[1] = R.drawable.bird;
-        pictureIds[2] = R.drawable.cat;
-        pictureIds[3] = R.drawable.dog;
-        pictureIds[4] = R.drawable.hamster;
-        pictureIds[5] = R.drawable.mouse;
-        pictureIds[6] = R.drawable.rabbit;
-        pictureIds[7] = R.drawable.spider;
+        pictureIds = new ArrayList<>();
+        pictureIds.add(R.drawable.ant);
+        pictureIds.add(R.drawable.bird);
+        pictureIds.add(R.drawable.cat);
+        pictureIds.add(R.drawable.dog);
+        pictureIds.add(R.drawable.hamster);
+        pictureIds.add(R.drawable.mouse);
+        pictureIds.add(R.drawable.rabbit);
+        pictureIds.add(R.drawable.spider);
 
 
         logic = new Logic(pictureIds);
