@@ -8,10 +8,12 @@ import java.util.Random;
 public class Logic {
     private Board model;
     private List<Integer> ids;
+    private int[] swCard;
 
     public Logic(List<Integer> ids) {
         this.model = new Board();
         this.ids = ids;
+        swCard = new int[2];
     }
 
     public Board getModel() {
@@ -28,6 +30,20 @@ public class Logic {
                 counter++;
             }
         }
+    }
+
+    public boolean checkCard(int id){
+        if (swCard[0] == 0){
+            swCard[0] = id;
+            return false;
+        } else if (swCard[1] == 0) {
+            swCard[1] = id;
+            if (swCard[0] == swCard[1]){
+                return true;
+            }
+        }
+        swCard = new int[2];
+        return false;
     }
 
     public int getId(int i, int j){
