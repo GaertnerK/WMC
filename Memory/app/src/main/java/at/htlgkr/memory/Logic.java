@@ -42,8 +42,11 @@ public class Logic {
                 return true;
             }
         }
-        swCard = new int[2];
         return false;
+    }
+
+    public void resetSwCard(){
+        swCard = new int[2];
     }
 
     public int getId(int i, int j){
