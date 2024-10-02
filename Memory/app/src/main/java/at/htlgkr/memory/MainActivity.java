@@ -1,7 +1,9 @@
 package at.htlgkr.memory;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView[] imageViews;
     private Logic logic;
     private Map<Integer, Boolean> pictureIds;
+    private int roundCounter;
+    private TextView tv;
+    private Button resetButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         List<Integer> pictureIdsList = new ArrayList<>();
         pictureIdsList.addAll(pictureIdsSet);
+
+        tv = findViewById(R.id.roundCounter);
+
+        resetButton = findViewById(R.id.resetBt);
 
         logic = new Logic(pictureIdsList);
 
@@ -88,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         for(ImageView imageView : imageViews){
             imageView.setOnClickListener(view -> {
                 if (tappedButton.get() == 2){
+                    addCounter();
                     for (ImageView iv : imageViews){
                         iv.setClickable(true);
                     }
@@ -196,6 +206,15 @@ public class MainActivity extends AppCompatActivity {
                 tappedButton.getAndIncrement();
             });
         }
+
+        resetButton.setOnClickListener(view -> {
+            for(ImageView temp : imageViews){
+                temp.setImageResource(R.drawable.ic_launcher_background);
+            }
+            List<Integer> tempList = new ArrayList<>(pictureIds.keySet());
+            logic = new Logic(tempList);
+            logic.loadBoard();
+        });
     }
 
     public void switchCards(){
@@ -208,5 +227,10 @@ public class MainActivity extends AppCompatActivity {
                 counter++;
             }
         }
+    }
+
+    public void addCounter(){
+        roundCounter++;
+        tv.setText(String.valueOf(roundCounter));
     }
 }
