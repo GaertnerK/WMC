@@ -1,6 +1,8 @@
 package at.htlgkr.minigame;
 
-public class Logic {
+import java.util.Random;
+
+public class Logic extends Words{
     Word word;
     String[] letters;
 
@@ -9,5 +11,9 @@ public class Logic {
         this.letters = letters;
     }
 
-
+    public void setWord(){
+        Random random = new Random();
+        String s = getOneWord(random.nextInt(100));
+        word.setLetters(s.split(""));
+    }
 }
