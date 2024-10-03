@@ -9,6 +9,10 @@ public class Logic extends Words{
         word = new Word();
     }
 
+    public Word getWord() {
+        return word;
+    }
+
     public void setWord(){
         Random random = new Random();
         String s = getOneWord(random.nextInt(100));
@@ -25,8 +29,8 @@ public class Logic extends Words{
     }
 
     public String[] checkWord(String[] letters){
-        for (int i = 0; i < word.getLetters().length; i++){
-            if (!word.getLetters()[i].contains(letters[i])){
+        for (int i = 0; i < word.getLetters().length; i++) {
+            if (!word.getLetters()[i].contains(letters[i])) {
                 letters[i] = "";
             }
         }

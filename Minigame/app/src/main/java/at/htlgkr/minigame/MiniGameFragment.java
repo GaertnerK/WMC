@@ -72,6 +72,14 @@ public class MiniGameFragment extends Fragment {
             }
         });
 
+        binding.btReveal.setOnClickListener(view -> {
+            int counter = 0;
+            for(String letter : logic.getWord().getLetters()){
+                editTexts[counter].setText(letter);
+                counter++;
+            }
+        });
+
         return binding.getRoot();
     }
 }
