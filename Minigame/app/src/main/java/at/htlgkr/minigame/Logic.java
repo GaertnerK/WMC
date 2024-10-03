@@ -4,16 +4,32 @@ import java.util.Random;
 
 public class Logic extends Words{
     Word word;
-    String[] letters;
 
-    public Logic(String[] letters){
+    public Logic(){
         word = new Word();
-        this.letters = letters;
     }
 
     public void setWord(){
         Random random = new Random();
         String s = getOneWord(random.nextInt(100));
         word.setLetters(s.split(""));
+    }
+
+    public boolean checkWin(String[] letters){
+        for (int i = 0; i < word.getLetters().length; i++){
+            if (!word.getLetters()[i].equalsIgnoreCase(letters[i])){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String[] checkWord(String[] letters){
+        for (int i = 0; i < word.getLetters().length; i++){
+            if (!word.getLetters()[i].contains(letters[i])){
+                letters[i] = "";
+            }
+        }
+        return letters;
     }
 }
