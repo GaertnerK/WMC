@@ -1,5 +1,6 @@
 package at.htlgkr.minigame;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Logic extends Words{
@@ -15,7 +16,7 @@ public class Logic extends Words{
 
     public void setWord(){
         Random random = new Random();
-        String s = getOneWord(random.nextInt(100));
+        String s = getOneWord(random.nextInt(85));
         word.setLetters(s.split(""));
     }
 
@@ -30,8 +31,18 @@ public class Logic extends Words{
 
     public String[] checkWord(String[] letters){
         for (int i = 0; i < word.getLetters().length; i++) {
-            if (!word.getLetters()[i].contains(letters[i])) {
-                letters[i] = "";
+            if (word.getLetters()[i].equalsIgnoreCase(letters[i])){
+
+            }else {
+                for (int j = 0; j < word.getLetters().length; j++) {
+                    if (word.getLetters()[j].equalsIgnoreCase(letters[i])){
+                        letters[i] = "1";
+                        break;
+                    }
+                }
+                if (!letters[i].equalsIgnoreCase("1")) {
+                    letters[i] = "";
+                }
             }
         }
         return letters;
