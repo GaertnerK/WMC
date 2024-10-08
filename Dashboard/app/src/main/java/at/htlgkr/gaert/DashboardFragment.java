@@ -36,8 +36,6 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
 
-        btLeft =
-
         return binding.getRoot();
     }
 }
