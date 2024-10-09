@@ -38,14 +38,14 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
 
-        float testTemp = 20.1f;
+        dashboard.setTemperature(20.1f);
 
         dashboard = new Dashboard();
+        dashboard.addTemperatureConverter(value -> value + " °C");
         dashboard.addTemperatureConverter(value -> {
 
-            return value + " °C";
+            return value + " °F";
         });
-        dashboard.addTemperatureConverter(value -> value + " °F");
 
         btLeft = new Button[4];
         btLeft[0] = binding.btPressL;

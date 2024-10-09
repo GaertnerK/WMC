@@ -7,6 +7,7 @@
     tools:context=".MiniGameFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
@@ -80,8 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:hint="1">
+            android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etOne"
@@ -96,8 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:hint="2">
+            android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTwo"
@@ -111,8 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:hint="3">
+            android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etThree"
@@ -126,8 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:hint="4">
+            android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etFour"
@@ -141,8 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:hint="5">
+            android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etFive"
@@ -176,4 +172,14 @@
         app:layout_constraintStart_toEndOf="@+id/btCheck"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.495" />
+
+    <TextView
+        android:id="@+id/tvWrong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wrong letters:"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

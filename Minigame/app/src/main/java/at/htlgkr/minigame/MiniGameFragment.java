@@ -1,5 +1,6 @@
 package at.htlgkr.minigame;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class MiniGameFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,10 +70,16 @@ public class MiniGameFragment extends Fragment {
                 tfInput[i] = editTexts[i].getText().toString();
             }
 
+
+            String[] tempArr = tfInput.clone();
+
             if (logic.checkWin(tfInput)){
-                Snackbar.make(container, "Richtig, neues Wort bitte erraten!", BaseTransientBottomBar.LENGTH_SHORT).show();
+                Snackbar.make(container, "Richtig, bitte neues Wort erraten!", BaseTransientBottomBar.LENGTH_SHORT).show();
                 for (ImageView imageView : imageViews){
-                    imageView.setImageResource(R.drawable.white);
+                    imageView.setImageResource(R.drawable.white2);
+                }
+                for (TextInputEditText editText : editTexts){
+                    editText.setHint("");
                 }
                 logic.setWord();
                 for (TextInputEditText temp : editTexts) {
@@ -82,9 +90,15 @@ public class MiniGameFragment extends Fragment {
                 for(String letter : logic.checkWord(tfInput)){
                     if (letter.equalsIgnoreCase("1")){
                         imageViews[counter].setImageResource(R.drawable.yellow);
+                        editTexts[counter].setHint(editTexts[counter].getText());
+                        editTexts[counter].setText("");
+
                     }else if(letter.equalsIgnoreCase("")){
                         editTexts[counter].setText(letter);
+                        binding.tvWrong.setText(binding.tvWrong.getText() + " " + tempArr[counter]);
                         imageViews[counter].setImageResource(R.drawable.red);
+                        editTexts[counter].setHint("");
+
                     } else {
                         imageViews[counter].setImageResource(R.drawable.green);
                     }
