@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,10 @@ import android.widget.ImageView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import at.htlgkr.minigame.databinding.FragmentMiniGameBinding;
 
@@ -65,6 +68,9 @@ public class MiniGameFragment extends Fragment {
 
         tfInput = new String[5];
 
+        AtomicReference<List<String>> wrongLetteresArr = new AtomicReference<>(new ArrayList<>());
+        AtomicReference<String> tempWrongL = new AtomicReference<>("");
+
         binding.btCheck.setOnClickListener(view -> {
             for (int i = 0; i < editTexts.length; i++){
                 tfInput[i] = editTexts[i].getText().toString();
@@ -72,6 +78,7 @@ public class MiniGameFragment extends Fragment {
 
 
             String[] tempArr = tfInput.clone();
+
 
             if (logic.checkWin(tfInput)){
                 Snackbar.make(container, "Richtig, bitte neues Wort erraten!", BaseTransientBottomBar.LENGTH_SHORT).show();
@@ -85,6 +92,9 @@ public class MiniGameFragment extends Fragment {
                 for (TextInputEditText temp : editTexts) {
                     temp.setText("");
                 }
+                binding.tvWrong.setText("Wrong letters:");
+                tempWrongL.set("");
+                wrongLetteresArr.set(new ArrayList<>());
             } else {
                 int counter = 0;
                 for(String letter : logic.checkWord(tfInput)){
@@ -95,7 +105,15 @@ public class MiniGameFragment extends Fragment {
 
                     }else if(letter.equalsIgnoreCase("")){
                         editTexts[counter].setText(letter);
-                        binding.tvWrong.setText(binding.tvWrong.getText() + " " + tempArr[counter]);
+                        if (!wrongLetteresArr.get().contains(tempArr[counter])) {
+                            wrongLetteresArr.get().add(tempArr[counter]);
+                            tempWrongL.set("");
+                            for (int i = 0; i < wrongLetteresArr.get().size(); i++) {
+                                String s = wrongLetteresArr.get().get(i);
+                                tempWrongL.set(tempWrongL + " " + s);
+                                binding.tvWrong.setText("Wrong letters:" + " " + tempWrongL);
+                            }
+                        }
                         imageViews[counter].setImageResource(R.drawable.red);
                         editTexts[counter].setHint("");
 
