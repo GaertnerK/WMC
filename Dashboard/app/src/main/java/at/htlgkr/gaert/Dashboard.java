@@ -14,7 +14,7 @@ public class Dashboard implements IDashboard{
     private float tempSpeed;
 
     private List<Time> time;
-    private float tempTime;
+    private String tempTime;
 
     int indTemp = 0;
     int indPress = 0;
@@ -29,7 +29,7 @@ public class Dashboard implements IDashboard{
         this.speed = new ArrayList<>();
         this.tempSpeed = 0;
         this.time = new ArrayList<>();
-        this.tempTime = 0;
+        this.tempTime = "";
     }
 
     public void addIndTemp(){
@@ -48,11 +48,10 @@ public class Dashboard implements IDashboard{
     }
 
     public void addIndPress(){
+        indPress += 1;
         if (indPress >= pressure.size()){
             indPress = 0;
-            return;
         }
-        indPress += 1;
     }
 
     public void reduceIndPress(){
@@ -64,11 +63,11 @@ public class Dashboard implements IDashboard{
     }
 
     public void addIndSpeed(){
+        indSpeed += 1;
         if (indSpeed >= speed.size()){
             indSpeed = 0;
             return;
         }
-        indSpeed += 1;
     }
 
     public void reduceIndSpeed(){
@@ -80,11 +79,11 @@ public class Dashboard implements IDashboard{
     }
 
     public void addIndTime(){
+        indTime += 1;
         if (indTime >= time.size()){
             indTime = 0;
             return;
         }
-        indTime += 1;
     }
 
     public void reduceIndTime(){
@@ -107,7 +106,7 @@ public class Dashboard implements IDashboard{
         this.tempSpeed = tempSpeed;
     }
 
-    public void setTempTime(float tempTime) {
+    public void setTempTime(String tempTime) {
         this.tempTime = tempTime;
     }
 
@@ -135,7 +134,7 @@ public class Dashboard implements IDashboard{
 
     @Override
     public String displayableSpeed() {
-        return "";
+        return speed.get(indSpeed).getSpeed(tempSpeed);
     }
 
     public void addTimeConverter(Time converter){
@@ -144,6 +143,6 @@ public class Dashboard implements IDashboard{
 
     @Override
     public String displayableTime() {
-        return "";
+        return time.get(indTime).getTime(tempTime);
     }
 }

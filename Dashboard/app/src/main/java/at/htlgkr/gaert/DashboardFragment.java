@@ -56,7 +56,43 @@ public class DashboardFragment extends Fragment {
         });
         dashboard.addTemperatureConverter(value -> {
             value = value + 273.15f;
-            return value + "K";
+            return value + " K";
+        });
+
+        dashboard.addPressureConverter(value -> value + " PA");
+        dashboard.addPressureConverter(value -> {
+            value = value / 100000;
+            return value + " bar";
+        });
+
+        dashboard.addSpeedConverter(value -> value + " m/s");
+        dashboard.addSpeedConverter(value -> {
+            value = value * 3.6f;
+            return value + " km/h";
+        });
+        dashboard.addSpeedConverter(value -> {
+            value = value * 2.237f;
+            return value + " mph";
+        });
+
+        dashboard.addTimeConverter(value -> value);
+        dashboard.addTimeConverter(value -> {
+            value = value.substring(0, value.length()-3);
+            return value;
+        });
+        dashboard.addTimeConverter(value -> {
+            String[] timeA = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+            for (String string : timeA) {
+                if (string.equals(value.substring(0, 2))) {
+                    return string + value.substring(2) + " am";
+                }
+            }
+            for (String s : timeA) {
+                if (String.valueOf(Integer.parseInt(s) * 2).equals(value.substring(0, 2))) {
+                    return s + value.substring(2) + " pm";
+                }
+            }
+            return "";
         });
 
         btLeft = new Button[4];
@@ -73,6 +109,12 @@ public class DashboardFragment extends Fragment {
 
         dashboard.setTemperature(20.1f);
         tvTemp.setText(dashboard.displayableTemperature());
+        dashboard.setTempPress(700f);
+        tvPressure.setText(dashboard.displayablePressure());
+        dashboard.setTempSpeed(300f);
+        tvSpeed.setText(dashboard.displayableSpeed());
+        dashboard.setTempTime("24:33:22");
+        tvTime.setText(dashboard.displayableTime());
 
         for (Button b : btLeft) {
             b.setOnClickListener(view -> {
