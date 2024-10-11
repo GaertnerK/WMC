@@ -35,6 +35,7 @@ public class MemoryFragment extends Fragment {
     private int roundCounter;
     private TextView tv;
     private Button resetButton;
+    private AtomicInteger tappedButton;
 
     public MemoryFragment() {
         // Required empty public constructor
@@ -49,6 +50,8 @@ public class MemoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMemoryBinding.inflate(inflater, container, false);
+
+        tappedButton = new AtomicInteger();
 
         pictureIds = new HashMap<>();
         pictureIds.put(R.drawable.ant, false);
@@ -96,7 +99,6 @@ public class MemoryFragment extends Fragment {
             view.setImageResource(R.drawable.ic_launcher_background);
         }
 
-        AtomicInteger tappedButton = new AtomicInteger();
         for(ImageView imageView : imageViews){
             imageView.setOnClickListener(view -> {
                 if (tappedButton.get() == 2){
@@ -217,10 +219,10 @@ public class MemoryFragment extends Fragment {
             List<Integer> tempList = new ArrayList<>(pictureIds.keySet());
             logic = new Logic(tempList);
             logic.loadBoard();
+            roundCounter = 0;
         });
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_memory, container, false);
+        return binding.getRoot();
     }
 
     public void switchCards(){

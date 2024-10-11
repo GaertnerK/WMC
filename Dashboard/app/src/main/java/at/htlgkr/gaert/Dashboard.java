@@ -1,5 +1,6 @@
 package at.htlgkr.gaert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Dashboard implements IDashboard{
@@ -20,12 +21,22 @@ public class Dashboard implements IDashboard{
     int indSpeed = 0;
     int indTime = 0;
 
+    public Dashboard() {
+        this.temp = new ArrayList<>();
+        this.temperature = 0;
+        this.pressure = new ArrayList<>();
+        this.tempPress = 0;
+        this.speed = new ArrayList<>();
+        this.tempSpeed = 0;
+        this.time = new ArrayList<>();
+        this.tempTime = 0;
+    }
+
     public void addIndTemp(){
+        indTemp += 1;
         if (indTemp >= temp.size()){
             indTemp = 0;
-            return;
         }
-        indTemp += 1;
     }
 
     public void reduceIndTemp(){
@@ -109,14 +120,26 @@ public class Dashboard implements IDashboard{
         return temp.get(indTemp).getTemp(temperature);
     }
 
+    public void addPressureConverter(Pressure converter){
+        pressure.add(converter);
+    }
+
     @Override
     public String displayablePressure() {
         return pressure.get(indPress).getPress(tempPress);
     }
 
+    public void addSpeedConverter(Speed converter){
+        speed.add(converter);
+    }
+
     @Override
     public String displayableSpeed() {
         return "";
+    }
+
+    public void addTimeConverter(Time converter){
+        time.add(converter);
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import at.htlgkr.gaert.databinding.FragmentDashboardBinding;
 
@@ -18,6 +19,10 @@ public class DashboardFragment extends Fragment {
     private Dashboard dashboard;
     private Button[] btLeft;
     private Button[] btRight;
+    private TextView tvTemp;
+    private TextView tvPressure;
+    private TextView tvSpeed;
+    private TextView tvTime;
 
     public DashboardFragment() {
         // Required empty public constructor
@@ -37,14 +42,21 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
-
-        dashboard.setTemperature(20.1f);
-
         dashboard = new Dashboard();
+
+        tvTemp = binding.tvTemp;
+        tvPressure = binding.tvPress;
+        tvSpeed = binding.tvSpeed;
+        tvTime = binding.tvTime;
+
         dashboard.addTemperatureConverter(value -> value + " °C");
         dashboard.addTemperatureConverter(value -> {
-
-            return value + " °F";
+            float temp = (float) ((value * 1.8) + 32);
+            return temp + " °F";
+        });
+        dashboard.addTemperatureConverter(value -> {
+            value = value + 273.15f;
+            return value + "K";
         });
 
         btLeft = new Button[4];
@@ -54,25 +66,28 @@ public class DashboardFragment extends Fragment {
         btLeft[3] = binding.btTimeL;
 
         btRight = new Button[4];
-        btLeft[0] = binding.btPressR;
-        btLeft[1] = binding.btSpeedR;
-        btLeft[2] = binding.btTempR;
-        btLeft[3] = binding.btTimeR;
+        btRight[0] = binding.btPressR;
+        btRight[1] = binding.btSpeedR;
+        btRight[2] = binding.btTempR;
+        btRight[3] = binding.btTimeR;
+
+        dashboard.setTemperature(20.1f);
+        tvTemp.setText(dashboard.displayableTemperature());
 
         for (Button b : btLeft) {
             b.setOnClickListener(view -> {
                 if (b.getId() == R.id.btTempL){
                     dashboard.reduceIndTemp();
-                    dashboard.displayableTemperature();
+                    tvTemp.setText(dashboard.displayableTemperature());
                 }else if (b.getId() == R.id.btPressL){
                     dashboard.reduceIndPress();
-                    dashboard.displayablePressure();
+                    tvPressure.setText(dashboard.displayablePressure());
                 }else if (b.getId() == R.id.btTimeL){
                     dashboard.reduceIndTime();
-                    dashboard.addIndTime();
+                    tvTime.setText(dashboard.displayableTime());
                 }else {
                     dashboard.reduceIndSpeed();
-                    dashboard.displayableSpeed();
+                    tvSpeed.setText(dashboard.displayableSpeed());
                 }
             });
         }
@@ -81,16 +96,16 @@ public class DashboardFragment extends Fragment {
             b.setOnClickListener(view -> {
                 if (b.getId() == R.id.btTempR){
                     dashboard.addIndTemp();
-                    dashboard.displayableTemperature();
+                    tvTemp.setText(dashboard.displayableTemperature());
                 }else if (b.getId() == R.id.btPressR){
                     dashboard.addIndPress();
-                    dashboard.displayablePressure();
+                    tvPressure.setText(dashboard.displayablePressure());
                 }else if (b.getId() == R.id.btTimeR){
                     dashboard.addIndTime();
-                    dashboard.displayableTime();
+                    tvTime.setText(dashboard.displayableTime());
                 }else {
                     dashboard.addIndSpeed();
-                    dashboard.displayableSpeed();
+                    tvSpeed.setText(dashboard.displayableSpeed());
                 }
             });
         }
