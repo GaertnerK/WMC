@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dashboard implements IDashboard{
-    private List<Temperature> temp;
+    private List<Converter> temp;
     private float temperature;
 
-    private List<Pressure> pressure;
+    private List<Converter> pressure;
     private float tempPress;
 
-    private List<Speed> speed;
+    private List<Converter> speed;
     private float tempSpeed;
 
     private List<Time> time;
@@ -110,31 +110,31 @@ public class Dashboard implements IDashboard{
         this.tempTime = tempTime;
     }
 
-    public void addTemperatureConverter(Temperature converter) {
+    public void addTemperatureConverter(Converter converter) {
         temp.add(converter);
     }
 
     @Override
     public String displayableTemperature() {
-        return temp.get(indTemp).getTemp(temperature);
+        return temp.get(indTemp).getConverter(temperature);
     }
 
-    public void addPressureConverter(Pressure converter){
+    public void addPressureConverter(Converter converter){
         pressure.add(converter);
     }
 
     @Override
     public String displayablePressure() {
-        return pressure.get(indPress).getPress(tempPress);
+        return pressure.get(indPress).getConverter(tempPress);
     }
 
-    public void addSpeedConverter(Speed converter){
+    public void addSpeedConverter(Converter converter){
         speed.add(converter);
     }
 
     @Override
     public String displayableSpeed() {
-        return speed.get(indSpeed).getSpeed(tempSpeed);
+        return speed.get(indSpeed).getConverter(tempSpeed);
     }
 
     public void addTimeConverter(Time converter){
