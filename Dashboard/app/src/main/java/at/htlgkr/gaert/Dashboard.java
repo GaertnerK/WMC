@@ -116,7 +116,7 @@ public class Dashboard implements IDashboard{
 
     @Override
     public String displayableTemperature() {
-        return temp.get(indTemp).getConverter(temperature);
+        return temp.get(indTemp).convert(temperature);
     }
 
     public void addPressureConverter(Converter converter){
@@ -125,7 +125,7 @@ public class Dashboard implements IDashboard{
 
     @Override
     public String displayablePressure() {
-        return pressure.get(indPress).getConverter(tempPress);
+        return pressure.get(indPress).convert(tempPress);
     }
 
     public void addSpeedConverter(Converter converter){
@@ -134,7 +134,7 @@ public class Dashboard implements IDashboard{
 
     @Override
     public String displayableSpeed() {
-        return speed.get(indSpeed).getConverter(tempSpeed);
+        return speed.get(indSpeed).convert(tempSpeed);
     }
 
     public void addTimeConverter(Time converter){

@@ -4,30 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
-    android:layout_weight="3"
+    android:layout_weight="5"
     android:gravity="bottom"
     android:orientation="vertical"
     tools:context=".fragment.MenuFragment">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="bottom|center"
+        android:text="Herzlich Willkommen,"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center|top"
+        android:text="bitte wählen sie ein Spiel aus" />
+
     <Button
         android:id="@+id/btTTT"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="114dp"
         android:layout_gravity="bottom"
-        android:text="Tic Tac Toe" />
+        android:text="Tic Tac Toe"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btMemory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="114dp"
         android:layout_gravity="bottom"
-        android:text="Memory" />
+        android:text="Memory"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btMiniGame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="114dp"
         android:layout_gravity="bottom"
-        android:text="Mini Game" />
+        android:text="Mini Game"
+        android:textSize="20sp" />
 
 </LinearLayout>

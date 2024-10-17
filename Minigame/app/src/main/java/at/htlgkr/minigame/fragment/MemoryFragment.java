@@ -110,97 +110,97 @@ public class MemoryFragment extends Fragment {
                     tappedButton.set(0);
                     switchCards();
                 }
-                if (view.getId() == R.id.picture1){
+                if (view.getId() == binding.picture1.getId()){
                     imageView.setImageResource(logic.getId(0, 0));
                     if (logic.checkCard(logic.getId(0,0))) {
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(0, 0), true);
                     }
-                }else if (view.getId() == R.id.picture2) {
+                }else if (view.getId() == binding.picture2.getId()) {
                     imageView.setImageResource(logic.getId(0, 1));
                     if (logic.checkCard(logic.getId(0,1))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(0, 1), true);
                     }
-                }else if (view.getId() == R.id.picture3) {
+                }else if (view.getId() == binding.picture3.getId()) {
                     imageView.setImageResource(logic.getId(0, 2));
                     if (logic.checkCard(logic.getId(0,2))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(0, 2), true);
                     }
-                }else if (view.getId() == R.id.picture4) {
+                }else if (view.getId() == binding.picture4.getId()) {
                     imageView.setImageResource(logic.getId(0, 3));
                     if (logic.checkCard(logic.getId(0,3))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(0, 3), true);
                     }
-                }else if (view.getId() == R.id.picture5) {
+                }else if (view.getId() == binding.picture5.getId()) {
                     imageView.setImageResource(logic.getId(1, 0));
                     if (logic.checkCard(logic.getId(1,0))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(1,0), true);
                     }
-                }else if (view.getId() == R.id.picture6) {
+                }else if (view.getId() == binding.picture6.getId()) {
                     imageView.setImageResource(logic.getId(1, 1));
                     if (logic.checkCard(logic.getId(1,1))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(1,1), true);
                     }
-                }else if (view.getId() == R.id.picture7) {
+                }else if (view.getId() == binding.picture7.getId()) {
                     imageView.setImageResource(logic.getId(1, 2));
                     if (logic.checkCard(logic.getId(1,2))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(1, 2), true);
                     }
-                }else if (view.getId() == R.id.picture8) {
+                }else if (view.getId() == binding.picture8.getId()) {
                     imageView.setImageResource(logic.getId(1, 3));
                     if (logic.checkCard(logic.getId(1,3))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(1,3), true);
                     }
-                }else if (view.getId() == R.id.picture9) {
+                }else if (view.getId() == binding.picture9.getId()) {
                     imageView.setImageResource(logic.getId(2, 0));
                     if (logic.checkCard(logic.getId(2,0))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(2,0), true);
                     }
-                }else if (view.getId() == R.id.picture10) {
+                }else if (view.getId() == binding.picture10.getId()) {
                     imageView.setImageResource(logic.getId(2, 1));
                     if (logic.checkCard(logic.getId(2,1))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(2,1), true);
                     }
-                }else if (view.getId() == R.id.picture11) {
+                }else if (view.getId() == binding.picture11.getId()) {
                     imageView.setImageResource(logic.getId(2, 2));
                     if (logic.checkCard(logic.getId(2,2))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(2, 2), true);
                     }
-                }else if (view.getId() == R.id.picture12) {
+                }else if (view.getId() == binding.picture12.getId()) {
                     imageView.setImageResource(logic.getId(2, 3));
                     if (logic.checkCard(logic.getId(2,3))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(2, 3), true);
                     }
-                }else if (view.getId() == R.id.picture13) {
+                }else if (view.getId() == binding.picture13.getId()) {
                     imageView.setImageResource(logic.getId(3, 0));
                     if (logic.checkCard(logic.getId(3,0))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(3,0), true);
                     }
-                }else if (view.getId() == R.id.picture14) {
+                }else if (view.getId() == binding.picture14.getId()) {
                     imageView.setImageResource(logic.getId(3, 1));
                     if (logic.checkCard(logic.getId(3,1))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(3,1), true);
                     }
-                }else if (view.getId() == R.id.picture15) {
+                }else if (view.getId() == binding.picture15.getId()) {
                     imageView.setImageResource(logic.getId(3, 2));
                     if (logic.checkCard(logic.getId(3,2))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
                         pictureIds.replace(logic.getId(3, 2), true);
                     }
-                }else if (view.getId() == R.id.picture16) {
+                }else if (view.getId() == binding.picture16.getId()) {
                     imageView.setImageResource(logic.getId(3, 3));
                     if (logic.checkCard(logic.getId(3,3))){
                         Snackbar.make(view, "Richtig", BaseTransientBottomBar.LENGTH_SHORT).show();
@@ -213,13 +213,22 @@ public class MemoryFragment extends Fragment {
         }
 
         resetButton.setOnClickListener(view -> {
+            for(int i : pictureIds.keySet()){
+                pictureIds.replace(i, false);
+            }
+
             for(ImageView temp : imageViews){
                 temp.setImageResource(R.drawable.ic_launcher_background);
             }
             List<Integer> tempList = new ArrayList<>(pictureIds.keySet());
-            logic = new Logic(tempList);
+            logic = new Logic(pictureIdsList);
             logic.loadBoard();
             roundCounter = 0;
+            tappedButton.set(0);
+
+            for(ImageView iv : imageViews){
+                iv.setClickable(true);
+            }
         });
 
         return binding.getRoot();

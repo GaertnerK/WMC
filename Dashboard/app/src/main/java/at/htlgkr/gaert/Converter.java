@@ -1,5 +1,5 @@
 package at.htlgkr.gaert;
 
 public interface Converter {
-    public String getConverter(float f);
+    public String convert(float f);
 }
