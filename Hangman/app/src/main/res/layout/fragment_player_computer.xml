@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="171dp"
         android:layout_marginEnd="182dp"
-        android:text="Schwirigkeit wählen"
+        android:text="Schwierigkeit wählen"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
