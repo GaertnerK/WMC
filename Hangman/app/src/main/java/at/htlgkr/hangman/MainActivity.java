@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import at.htlgkr.hangman.databinding.ActivityMainBinding;
 import at.htlgkr.hangman.fragments.GameFragment;
 import at.htlgkr.hangman.fragments.MenuFragment;
+import at.htlgkr.hangman.fragments.NewGameFragment;
 import at.htlgkr.hangman.fragments.PlayerComputerFragment;
 import at.htlgkr.hangman.fragments.PlayerPlayerFragment;
 import at.htlgkr.hangman.viewmodel.MainViewModel;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             if (state == MainViewModel.MENU){
                 transaction.add(R.id.main, new MenuFragment(), "MENU FRAGMENT");
+                transaction.replace(R.id.main, new MenuFragment(), "MENU FRAGMENT");
             } else if(state == MainViewModel.PLAYERVSPLAYER){
                 transaction.replace(R.id.main, new PlayerPlayerFragment(), "PLAYER VS PLAYER FRAGMENT");
                 transaction.addToBackStack("MENU FRAGMENT");
@@ -50,6 +52,9 @@ public class MainActivity extends AppCompatActivity{
             }else if (state == MainViewModel.GAME){
                 transaction.replace(R.id.main, new GameFragment(), "GAME FRAGMENT");
                 transaction.addToBackStack("PLAYER VS COMPUTER FRAGMENT");
+            }else if (state == MainViewModel.NEWGAME){
+                transaction.replace(R.id.main, new NewGameFragment(), "NEW GAME FRAGMENT");
+                transaction.addToBackStack("GAME FRAGMENT");
             }
             transaction.commit();
         });

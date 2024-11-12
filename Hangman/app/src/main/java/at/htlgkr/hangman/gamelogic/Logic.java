@@ -12,12 +12,17 @@ public class Logic {
     public String checkLetter(String letter){
         String checkedWord = "";
         for (int i = 0; i < word.length(); i++){
-            if (letter.charAt(0) == word.charAt(i)){
-                checkedWordArr[i] = letter;
-                checkedWord = checkedWord + letter;
+            if (letter.charAt(0) == word.toLowerCase().charAt(i)){
+                if (i == 0){
+                    checkedWord = checkedWord + letter.toUpperCase();
+                    checkedWordArr[i] = letter.toUpperCase();
+                }else {
+                    checkedWordArr[i] = letter;
+                    checkedWord = checkedWord + letter;
+                }
             }else {
                 if (checkedWordArr[i] == null) {
-                    checkedWord = checkedWord + "";
+                    checkedWord = checkedWord + " ";
                 }else {
                     checkedWord = checkedWord + checkedWordArr[i];
                 }

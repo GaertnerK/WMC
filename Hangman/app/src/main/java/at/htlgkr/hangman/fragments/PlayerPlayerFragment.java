@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public class PlayerPlayerFragment extends Fragment {
         binding.btContiune.setOnClickListener(view -> {
             viewModel.showGame();
             viewModel.setWord(binding.teWord.getText().toString());
+            Log.i("Word", viewModel.getWord());
+            viewModel.setLogic();
         });
         return binding.getRoot();
     }
