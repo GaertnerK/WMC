@@ -81,7 +81,7 @@ public class NotesListFragment extends Fragment {
                 NotesRecyclerViewAdapter adapter = new NotesRecyclerViewAdapter(notes);
                 recyclerView.setAdapter(adapter);
                 adapter.setOnClickListener(position -> {
-
+                    mainViewModel.showEditNotes();
                 });
             });
 
