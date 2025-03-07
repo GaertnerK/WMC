@@ -1,5 +1,6 @@
 package at.htlgkr.digitalcookbook.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -36,12 +37,54 @@ public class RecipesOverviewFragment extends Fragment {
         LogicViewModel logicViewModel = new ViewModelProvider(requireActivity()).get(LogicViewModel.class);
         binding = FragmentRecipesOverviewBinding.inflate(inflater, container, false);
 
-        logicViewModel.loadRecipes(getContext().getApplicationContext());
+        if (!LogicViewModel.filter) {
+            logicViewModel.loadRecipes(getContext().getApplicationContext());
+        }
+
         binding.tvName.setText(logicViewModel.getRecipe(index).getName());
         binding.tvIngredients.setText(logicViewModel.getRecipe(index).getIngrediants());
-        binding.tvRecipeCounter.setText(index+1 + "/" + logicViewModel.getRecipes().size()+1);
+        binding.tvRecipeCounter.setText((index+1) + "/" + (logicViewModel.getRecipes().size()));
 
+        binding.btLeft.setOnClickListener(view -> {
+            if (index - 1 < 0){
+                index = logicViewModel.getRecipes().size()-1;
+            }else {
+                index -= 1;
+            }
+            binding.tvName.setText(logicViewModel.getRecipe(index).getName());
+            binding.tvIngredients.setText(logicViewModel.getRecipe(index).getIngrediants());
+            binding.tvRecipeCounter.setText((index+1) + "/" + (logicViewModel.getRecipes().size()));
+        });
 
+        binding.btRight.setOnClickListener(view -> {
+            if (index + 1 >= logicViewModel.getRecipes().size()){
+                index = 0;
+            }else {
+                index += 1;
+            }
+            binding.tvName.setText(logicViewModel.getRecipe(index).getName());
+            binding.tvIngredients.setText(logicViewModel.getRecipe(index).getIngrediants());
+            binding.tvRecipeCounter.setText((index+1) + "/" + (logicViewModel.getRecipes().size()));
+        });
+
+        binding.btFilter.setOnClickListener(view -> {
+            viewModel.showFilterOverview();
+        });
+
+        binding.btClearRecipes.setOnClickListener(view -> {
+            logicViewModel.clearRecipes();
+            logicViewModel.safeRecipes(getContext().getApplicationContext());
+            viewModel.showfirstPage();
+        });
+
+        binding.btShowRecipe.setOnClickListener(view -> {
+            LogicViewModel.index = index;
+            viewModel.showRecipeDetails();
+        });
+
+        binding.btHome.setOnClickListener(view -> {
+            viewModel.showfirstPage();
+        });
         return binding.getRoot();
     }
 }

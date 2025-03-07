@@ -8,6 +8,8 @@ public class MainViewModel extends ViewModel {
     public static final int firstPage = 0;
     public static final int addRecipe = 1;
     public static final int recipesOverview = 2;
+    public static final int filterOverview = 3;
+    public static final int recipeDetails = 4;
 
     private MutableLiveData<Integer> _state = new MutableLiveData<>(firstPage);
     public LiveData<Integer> state = _state;
@@ -22,5 +24,13 @@ public class MainViewModel extends ViewModel {
 
     public void showRecipesOverview(){
         _state.postValue(recipesOverview);
+    }
+
+    public void showFilterOverview(){
+        _state.postValue(filterOverview);
+    }
+
+    public void showRecipeDetails(){
+        _state.postValue(recipeDetails);
     }
 }

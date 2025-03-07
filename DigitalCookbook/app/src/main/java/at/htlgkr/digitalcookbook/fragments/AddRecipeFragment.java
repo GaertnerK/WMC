@@ -37,10 +37,19 @@ public class AddRecipeFragment extends Fragment {
         LogicViewModel logicViewModel = new ViewModelProvider(requireActivity()).get(LogicViewModel.class);
         binding = FragmentAddRecipeBinding.inflate(inflater, container, false);
 
+        if (LogicViewModel.edit){
+            binding.tfName.getEditText().setText(logicViewModel.getRecipe(LogicViewModel.index).getName());
+            binding.tfIngredients.getEditText().setText(logicViewModel.getRecipe(LogicViewModel.index).getIngrediants());
+            binding.tfPreparation.getEditText().setText(logicViewModel.getRecipe(LogicViewModel.index).getPreparaion());
+            binding.tfTime.getEditText().setText(logicViewModel.getRecipe(LogicViewModel.index).getTime() + "");
+        }
+
         binding.btSave.setOnClickListener(view -> {
+            logicViewModel.loadRecipes(getContext().getApplicationContext());
             logicViewModel.addRecipe(new Recipe(binding.tfName.getEditText().getText().toString(), binding.tfIngredients.getEditText().getText().toString(), binding.tfPreparation.getEditText().getText().toString(), Integer.parseInt(binding.tfTime.getEditText().getText().toString())));
             logicViewModel.safeRecipes(getContext().getApplicationContext());
             viewModel.showRecipesOverview();
+            LogicViewModel.edit = false;
         });
 
         return binding.getRoot();

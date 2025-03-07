@@ -14,7 +14,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import at.htlgkr.digitalcookbook.fragments.AddRecipeFragment;
+import at.htlgkr.digitalcookbook.fragments.FilterFragment;
 import at.htlgkr.digitalcookbook.fragments.NoRecipeIncludedFragment;
+import at.htlgkr.digitalcookbook.fragments.RecipeDetailsFragment;
 import at.htlgkr.digitalcookbook.fragments.RecipesIncludedFragment;
 import at.htlgkr.digitalcookbook.fragments.RecipesOverviewFragment;
 import at.htlgkr.digitalcookbook.viewmodel.MainViewModel;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.state.observe(this, state -> {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             if (state == MainViewModel.firstPage){
-                if (IOHandler.read(getApplicationContext()) == null) {
+                if (IOHandler.read(getApplicationContext()) == null || IOHandler.read(getApplicationContext()).equals("[]")) {
                     transaction.add(R.id.main, new NoRecipeIncludedFragment(), "NO RECIPE INCLUDED FRAGMENT");
                     transaction.replace(R.id.main, new NoRecipeIncludedFragment(), "NO RECIPE INCLUDED FRAGMENT");
                 }else {
@@ -45,8 +47,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }else if (state == MainViewModel.addRecipe){
                 transaction.replace(R.id.main, new AddRecipeFragment(), "ADD RECIPE FRAGMENT");
+                transaction.addToBackStack("FIRST PAGE");
             }else if (state == MainViewModel.recipesOverview){
                 transaction.replace(R.id.main, new RecipesOverviewFragment(), "RECIPES OVERVIEW FRAGMENT");
+                transaction.addToBackStack("ADD RECIPE FRAGMENT");
+            }else if (state == MainViewModel.filterOverview){
+                transaction.replace(R.id.main, new FilterFragment(), "FILTER FRAGMENT");
+                transaction.addToBackStack("RECIPES OVERVIEW FRAGMENT");
+            }else if (state == MainViewModel.recipeDetails){
+                transaction.replace(R.id.main, new RecipeDetailsFragment(), "RECIPE DETAILS FRAGMENT");
+                transaction.addToBackStack("RECIPES OVERVIEW FRAGMENT");
             }
             transaction.commit();
         });

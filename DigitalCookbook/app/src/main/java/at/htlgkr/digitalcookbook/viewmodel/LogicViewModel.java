@@ -1,6 +1,5 @@
 package at.htlgkr.digitalcookbook.viewmodel;
 
-import android.app.appsearch.AppSearchManager;
 import android.content.Context;
 
 import androidx.lifecycle.ViewModel;
@@ -8,19 +7,23 @@ import androidx.lifecycle.ViewModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import at.htlgkr.digitalcookbook.IOHandler;
-import at.htlgkr.digitalcookbook.R;
 import at.htlgkr.digitalcookbook.Recipe;
 
 public class LogicViewModel extends ViewModel {
-    List<Recipe> recipes;
+    private List<Recipe> recipes;
+    public List<Recipe> filterdRecipes;
+
+    public static boolean filter = false;
+    public static boolean edit = false;
+    public static int index = 0;
 
     public LogicViewModel() {
         this.recipes = new ArrayList<>();
+        this.filterdRecipes = new ArrayList<>();
     }
 
     public List<Recipe> getRecipes() {
@@ -32,7 +35,15 @@ public class LogicViewModel extends ViewModel {
     }
 
     public void addRecipe(Recipe recipe){
-        recipes.add(recipe);
+        if (edit){
+            recipes.set(index, recipe);
+        }else {
+            recipes.add(recipe);
+        }
+    }
+
+    public void clearRecipes(){
+        recipes = new ArrayList<>();
     }
 
     public void safeRecipes(Context context){
@@ -44,7 +55,11 @@ public class LogicViewModel extends ViewModel {
     public void loadRecipes(Context context){
         Gson gson = new Gson();
         String s = IOHandler.read(context);
-        TypeToken<List<Recipe>> typeToken = new TypeToken<List<Recipe>>(){};
+        TypeToken<List<Recipe>> typeToken = new TypeToken<List<Recipe>>() {};
         recipes = gson.fromJson(s, typeToken);
+    }
+
+    public void loadFilteredRecipes(){
+        recipes = filterdRecipes;
     }
 }
